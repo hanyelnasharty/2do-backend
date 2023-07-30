@@ -17,28 +17,28 @@ app.use(express.json());
 
 app.post('/tasks', (req, res) => {
     Task.create(req.body)
-        .then((createdCar) => {
-            res.json(createdCar)
+        .then((createdTask) => {
+            res.json(createdTask)
     })
 })
 
 app.get('/tasks', (req, res) => {
     Task.find({})
-        .then((foundCar) => {
-            res.json(foundCar)
+        .then((foundTask) => {
+            res.json(foundTask)
         })
 })
 
 app.delete('/tasks/:id', (req, res) => {
     Task.findByIdAndRemove(req.params.id)
-        .then((deletedCar) => {
-            res.json(deletedCar)
+        .then((deletedTask) => {
+            res.json(deletedTask)
         })
 })
 
 app.put('/tasks/:id', (req, res) => {
     Task.findByIdAndUpdate(req.params.id, req.body, {new: true})
-        .then((updatedCar) => res.json(updatedCar))
+        .then((updatedTask) => res.json(updatedTask))
 })
 
 app.listen(PORT, () => console.log( 'Listening on port:', PORT));
