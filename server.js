@@ -9,7 +9,6 @@ require('dotenv').config()
 const PORT = process.env.PORT
 
 const MONGODB_URI = process.env.MONGODB_URI;
-mongoose.connect(MONGODB_URI)
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -42,6 +41,7 @@ app.put('/tasks/:id', (req, res) => {
 })
 
 app.listen(PORT, () => console.log( 'Listening on port:', PORT));
+mongoose.connect(MONGODB_URI);
 mongoose.connection.once('open', () => {
     console.log('connected to mongod...');
 });
